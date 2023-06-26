@@ -3,7 +3,7 @@ package com.backend.IntegradorFinal.service.imp;
 import com.backend.IntegradorFinal.dto.OdontologoDto;
 import com.backend.IntegradorFinal.entity.Odontologo;
 import com.backend.IntegradorFinal.exceptions.ResourceNotFoundException;
-import com.backend.IntegradorFinal.repository.OdontologoRepository;
+import com.backend.IntegradorFinal.dto.repository.OdontologoRepository;
 import com.backend.IntegradorFinal.service.IOdontologoService;
 import com.backend.IntegradorFinal.utils.JsonPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;

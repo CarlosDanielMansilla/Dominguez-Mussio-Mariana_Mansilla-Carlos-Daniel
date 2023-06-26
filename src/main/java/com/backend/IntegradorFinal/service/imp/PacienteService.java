@@ -3,7 +3,7 @@ package com.backend.IntegradorFinal.service.imp;
 import com.backend.IntegradorFinal.dto.DomicilioDto;
 import com.backend.IntegradorFinal.dto.PacienteDto;
 import com.backend.IntegradorFinal.entity.Paciente;
-import com.backend.IntegradorFinal.repository.PacienteRepository;
+import com.backend.IntegradorFinal.dto.repository.PacienteRepository;
 import com.backend.IntegradorFinal.service.IPacienteService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;

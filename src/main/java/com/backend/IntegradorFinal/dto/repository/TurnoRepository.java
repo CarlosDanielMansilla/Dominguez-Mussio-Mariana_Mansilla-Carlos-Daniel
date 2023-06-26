@@ -1,4 +1,4 @@
-package com.backend.IntegradorFinal.repository;
+package com.backend.IntegradorFinal.dto.repository;
 
 import com.backend.IntegradorFinal.entity.Turno;
 import org.springframework.data.jpa.repository.JpaRepository;
