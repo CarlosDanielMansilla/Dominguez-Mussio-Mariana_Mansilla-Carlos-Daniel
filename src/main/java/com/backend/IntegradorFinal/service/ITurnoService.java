@@ -1,9 +1,12 @@
 package com.backend.IntegradorFinal.service;
 
+import com.backend.IntegradorFinal.dto.TurnoDto;
+import com.backend.IntegradorFinal.entity.Turno;
+
 import java.util.List;
 
 public interface ITurnoService {
-    TurnoDto guardarTurno(Turno turno) throws BadRequestException;
+    TurnoDto guardarTurno(Turno turno) /*throws BadRequestException*/;
 
     List<TurnoDto> listarTodos();
 
@@ -11,7 +14,7 @@ public interface ITurnoService {
 
     TurnoDto actualizarTurno(Turno turno);
 
-    void eliminarTurno(Long id) throws ResourceNotFoundException;
+    void eliminarTurno(Long id) /*throws ResourceNotFoundException*/;
 
 
 }

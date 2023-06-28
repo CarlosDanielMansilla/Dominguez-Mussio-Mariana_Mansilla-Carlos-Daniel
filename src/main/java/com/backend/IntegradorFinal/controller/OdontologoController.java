@@ -2,8 +2,7 @@ package com.backend.IntegradorFinal.controller;
 
 import com.backend.IntegradorFinal.dto.OdontologoDto;
 import com.backend.IntegradorFinal.entity.Odontologo;
-import com.backend.IntegradorFinal.exceptions.ResourceNotFoundException;
-import com.backend.IntegradorFinal.service.imp.OdontologoService;
+import com.backend.IntegradorFinal.service.IOdontologoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/odontologos")
 public class OdontologoController {
@@ -20,53 +20,50 @@ public class OdontologoController {
     private static final Logger logger = LoggerFactory.getLogger(OdontologoController.class);
 
     @Autowired
-    private OdontologoService odontologoService;
+    private IOdontologoService odontologoService;
 
     @GetMapping()
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public List<Odontologo> odontologolist() throws ResourceNotFoundException{
-        logger.info("Llama a listar odontologos");
-        return odontologoService.list();
+    public ResponseEntity<List<OdontologoDto>> listarTodos(){
+        ResponseEntity<List<OdontologoDto>> respuesta;
+        List<OdontologoDto> odontologoDtos= odontologoService.listarOdontologos();
+        if(!odontologoDtos.isEmpty()) respuesta = new ResponseEntity<>(odontologoDtos, null, HttpStatus.OK);
+        else respuesta = ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        return respuesta;
 
-    }
-    @GetMapping("/view")
-    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
-    public List<Odontologo> odontologoView() throws EntityNotFoundException{
-        logger.info("Llama a listar odontologos");
-        return odontologoService.list();
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public ResponseEntity<?> buscarOdontologoPorId(@PathVariable Long id) {
-        return new ResponseEntity<>(odontologoService.buscarOdontologoPorId(id), null, HttpStatus.OK);
+    public ResponseEntity<OdontologoDto> buscarPorId(@PathVariable Long id){
+        ResponseEntity<OdontologoDto> respuesta;
+        OdontologoDto odontologoDto = odontologoService.buscarOdontologoPorId(id);
+        if(odontologoDto != null) respuesta = new ResponseEntity<>(odontologoDto, null, HttpStatus.OK);
+        else respuesta = ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        return respuesta;
     }
 
     @PostMapping("/registrar")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<OdontologoDto> registrarOdontologo(@RequestBody Odontologo odontologo) {
-        return new ResponseEntity<>(odontologoService.registrarOdontologo(odontologo), null, HttpStatus.CREATED);
+        ResponseEntity<OdontologoDto> respuesta;
+        OdontologoDto odontologoDto = odontologoService.registrarOdontologo(odontologo);
+        if(odontologoDto != null) respuesta = new ResponseEntity<>(odontologoDto, null, HttpStatus.CREATED);
+        else respuesta = ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        return respuesta;
     }
 
     @PutMapping("/actualizar")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<OdontologoDto> actualizarOdontologo(@RequestBody Odontologo odontologo) {
-        return new ResponseEntity<>(odontologoService.actualizarOdontologo(odontologo), null, HttpStatus.OK);
+        ResponseEntity<OdontologoDto> respuesta;
+        OdontologoDto odontologoDto = odontologoService.actualizarOdontologo(odontologo);
+        if(odontologoDto != null) respuesta = new ResponseEntity<>(odontologoDto, null, HttpStatus.OK);
+        else respuesta = ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        return respuesta;
     }
 
     @DeleteMapping("/eliminar/{id}")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public ResponseEntity<?> eliminarOdontologo(@PathVariable Long id) throws ResourceNotFoundException {
-        if (odontologoService.searchById(id).isPresent()){
-            odontologoService.eliminarOdontologo(id);
-            logger.info("Se eliminó un odontologo con id="+id);
-            return ResponseEntity.status(HttpStatus.OK).build();
-    }else{
-        logger.info("No se eliminó un odontologo con id="+id);
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    public ResponseEntity<?> eliminarOdontologo(@PathVariable Long id)  {
+        odontologoService.eliminarOdontologo(id);
+        return ResponseEntity.ok("Odontologo Eliminado");
     }
 }
-}
 
-}
 

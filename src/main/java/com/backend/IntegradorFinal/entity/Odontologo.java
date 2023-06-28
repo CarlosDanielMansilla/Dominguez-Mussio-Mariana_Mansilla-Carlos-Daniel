@@ -13,7 +13,7 @@ public class Odontologo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     @NotNull(message = "La matricula no puede ser nula")
     @NotBlank(message = "Debe especificarse la matricula del odontologo")
     @Pattern(regexp = "^[A-Z]{2}-\\d{1,3}\\d*$")
@@ -31,26 +31,16 @@ public class Odontologo {
     public Odontologo() {
     }
 
-    public Odontologo(int id, String matricula, String nombre, String apellido) {
-        this.id = id;
-        this.matricula = matricula;
-        this.nombre = nombre;
-        this.apellido = apellido;
-    }
-
     public Odontologo(String matricula, String nombre, String apellido) {
         this.matricula = matricula;
         this.nombre = nombre;
         this.apellido = apellido;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getMatricula() {
         return matricula;

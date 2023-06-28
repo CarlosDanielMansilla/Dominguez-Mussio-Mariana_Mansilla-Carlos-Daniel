@@ -43,12 +43,8 @@ public class PacienteController {
 
     //GET
     @GetMapping
-    public ResponseEntity<List<PacienteDto>> listarTodos(){
-        ResponseEntity<List<PacienteDto>> respuesta;
-        List<PacienteDto> pacienteDtos= pacienteService.listarPacientes();
-        if(!pacienteDtos.isEmpty()) respuesta = new ResponseEntity<>(pacienteDtos, null, HttpStatus.OK);
-        else respuesta = ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-        return respuesta;
+    public List<PacienteDto> listarTodos() {
+        return pacienteService.listarPacientes();
     }
 
     @GetMapping("/{id}")
@@ -56,16 +52,14 @@ public class PacienteController {
         ResponseEntity<PacienteDto> respuesta;
         PacienteDto pacienteDto = pacienteService.buscarPacientePorId(id);
         if(pacienteDto != null) respuesta = new ResponseEntity<>(pacienteDto, null, HttpStatus.OK);
-        else respuesta = ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        else respuesta = ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         return respuesta;
     }
 
     //DELETE
     @DeleteMapping("/eliminar/{id}")
-    public ResponseEntity<Void> eliminarPaciente(@PathVariable Long id){
-        ResponseEntity<Void> respuesta;
+    public ResponseEntity<?> eliminarPaciente(@PathVariable Long id){
         pacienteService.eliminarPaciente(id);
-        respuesta = ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-        return respuesta;
+        return ResponseEntity.ok("Paciente Eliminado");
     }
 }

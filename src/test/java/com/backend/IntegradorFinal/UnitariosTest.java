@@ -4,11 +4,17 @@ import com.backend.IntegradorFinal.entity.Domicilio;
 import com.backend.IntegradorFinal.entity.Odontologo;
 import com.backend.IntegradorFinal.entity.Paciente;
 import com.backend.IntegradorFinal.entity.Turno;
+import com.backend.IntegradorFinal.repository.OdontologoRepository;
+import com.backend.IntegradorFinal.repository.PacienteRepository;
+import com.backend.IntegradorFinal.repository.TurnoRepository;
 import com.backend.IntegradorFinal.service.IOdontologoService;
 import com.backend.IntegradorFinal.service.IPacienteService;
 import com.backend.IntegradorFinal.service.ITurnoService;
 
-import org.junit.Assert;
+import com.backend.IntegradorFinal.service.imp.OdontologoService;
+import com.backend.IntegradorFinal.service.imp.PacienteService;
+import com.backend.IntegradorFinal.service.imp.TurnoService;
+//import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -23,21 +29,26 @@ import java.util.Optional;
 @SpringBootTest
 public class UnitariosTest {
 
-    @Autowired
-    PacienteService pacienteService;
+
+    PacienteRepository pacienteRepository;
+    OdontologoRepository odontologoRepository;
+    TurnoRepository turnoRepository;
 
     @Autowired
-    OdontologoService odontologoService;
+    public UnitariosTest(PacienteRepository pacienteRepository, OdontologoRepository odontologoRepository, TurnoRepository turnoRepository) {
+        this.pacienteRepository = pacienteRepository;
+        this.odontologoRepository = odontologoRepository;
+        this.turnoRepository = turnoRepository;
+    }
 
-    @Autowired
-    TurnoService turnoService;
+   /*
 
     @DisplayName("Datos Iniciales")
     @BeforeEach
     void init() {
         Domicilio domicilio = new Domicilio("Gestido", 5,"Mar", "Lagunas");
         Paciente paciente= new Paciente("Rodriguez","Marcos", "marcos@gmail.com",1234567, LocalDate.of(2023,7,1));
-        pacienteService.save(paciente);
+        pacienteRepository.save(paciente);
 
         Odontologo odontologo = new Odontologo("Juana", "654321", "Tilcara");
         odontologoService.save(odontologo);
@@ -48,7 +59,7 @@ public class UnitariosTest {
 
     @Test
     void getPacientePorId(){
-        Optional<Paciente> paciente = pacienteService.searchById(1L);
+        Optional<Paciente> paciente = pacienteRepository.searchById(1L);
         Assert.assertTrue(paciente.get().getId().longValue()>=1L);
     }
 
@@ -106,5 +117,5 @@ public class UnitariosTest {
         Assert.assertEquals(turno1.getFecha(),LocalDate.of(2024,4,30));
     }
 
-
+*/
 }

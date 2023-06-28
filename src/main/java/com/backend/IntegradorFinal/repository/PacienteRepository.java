@@ -1,4 +1,4 @@
-package com.backend.IntegradorFinal.dto.repository;
+package com.backend.IntegradorFinal.repository;
 
 import com.backend.IntegradorFinal.entity.Paciente;
 import org.springframework.data.jpa.repository.JpaRepository;

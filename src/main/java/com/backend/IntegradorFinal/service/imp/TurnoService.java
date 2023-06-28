@@ -1,12 +1,20 @@
 package com.backend.IntegradorFinal.service.imp;
 
+import com.backend.IntegradorFinal.dto.OdontologoDto;
+import com.backend.IntegradorFinal.dto.PacienteDto;
+import com.backend.IntegradorFinal.dto.TurnoDto;
+import com.backend.IntegradorFinal.entity.Turno;
+import com.backend.IntegradorFinal.repository.TurnoRepository;
+import com.backend.IntegradorFinal.service.ITurnoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-public class TurnoService {
+@Service
+public class TurnoService implements ITurnoService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TurnoService.class);
     private final TurnoRepository turnoRepository;
@@ -21,7 +29,7 @@ public class TurnoService {
     }
 
     @Override
-    public TurnoDto guardarTurno(Turno turno) throws BadRequestException {
+    public TurnoDto guardarTurno(Turno turno) /*throws BadRequestException*/ {
         TurnoDto turnoDto = null;
         PacienteDto paciente = pacienteService.buscarPacientePorId(turno.getPaciente().getId());
         OdontologoDto odontologo = odontologoService.buscarOdontologoPorId(turno.getOdontologo().getId());
@@ -29,19 +37,19 @@ public class TurnoService {
         if(paciente == null || odontologo == null) {
             if(paciente == null && odontologo == null) {
                 LOGGER.error("El paciente y el odontologo no se encuentran en nuestra base de datos");
-                throw new BadRequestException("El paciente no se encuentra en nuestra base de datos");
+                //throw new BadRequestException("El paciente no se encuentra en nuestra base de datos");
             }
             else if (paciente == null){
                 LOGGER.error("El paciente no se encuentra en nuestra base de datos");
-                throw new BadRequestException("El paciente no se encuentra en nuestra base de datos");
+                //throw new BadRequestException("El paciente no se encuentra en nuestra base de datos");
             } else {
                 LOGGER.error("El odontologo no se encuentra en nuestra base de datos");
-                throw new BadRequestException("El odontologo no se encuentra en nuestra base de datos");
+                //throw new BadRequestException("El odontologo no se encuentra en nuestra base de datos");
             }
 
         } else {
             turnoDto = TurnoDto.fromTurno(turnoRepository.save(turno));
-            LOGGER.info("Nuevo turno registrado con exito: {}", JsonPrinter.toString(turnoDto));
+            LOGGER.info("Nuevo turno registrado con exito: {}", turnoDto);
         }
 
         return turnoDto;
@@ -54,7 +62,7 @@ public class TurnoService {
                 .map(TurnoDto::fromTurno)
                 .toList();
 
-        LOGGER.info("Lista de todos los turnos: {}", JsonPrinter.toString(turnoDtoList));
+        LOGGER.info("Lista de todos los turnos: {}", turnoDtoList);
         return turnoDtoList;
     }
 
@@ -64,7 +72,7 @@ public class TurnoService {
         TurnoDto turnoDto = null;
         if (turnoBuscado != null) {
             turnoDto = TurnoDto.fromTurno(turnoBuscado);
-            LOGGER.info("Turno encontrado: {}", JsonPrinter.toString(turnoDto));
+            LOGGER.info("Turno encontrado: {}", turnoDto);
         } else {
             LOGGER.info("El id no se encuentra registrado en la base de datos");
 
@@ -81,7 +89,7 @@ public class TurnoService {
             turnoAActualizar = turno;
             turnoRepository.save(turnoAActualizar);
             turnoDtoActualizado = TurnoDto.fromTurno(turnoAActualizar);
-            LOGGER.warn("Turno actualizado: {}", JsonPrinter.toString(turnoDtoActualizado));
+            LOGGER.warn("Turno actualizado: {}", turnoDtoActualizado);
         } else {
             LOGGER.error("No fue posible actualizar los datos ya que el turno no se encuentra registrado");
 
@@ -91,13 +99,13 @@ public class TurnoService {
     }
 
     @Override
-    public void eliminarTurno(Long id) throws ResourceNotFoundException {
+    public void eliminarTurno(Long id) /*throws ResourceNotFoundException*/ {
         if (buscarTurnoPorId(id) != null) {
             turnoRepository.deleteById(id);
             LOGGER.warn("Se ha eliminado el turno con id {}", id);
         } else {
             LOGGER.error("No se ha encontrado el turno con id {}", id);
-            throw new ResourceNotFoundException("No se ha encontrado el turno con id " + id);
+            //throw new ResourceNotFoundException("No se ha encontrado el turno con id " + id);
         }
     }
 
