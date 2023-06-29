@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+
+    </header>
+    <main>
+        <section class="conteinerCrud">
+            <section class="formPaciente">
+                <h2 class="titulos">Registrar Paciente</h2>
+                <form id="formulario">
+                    <div>
+                        <h2>Registrar</h2>
+                    </div>
+                    <div class="conteinerPaciente">
+                        <div>
+                            <div>
+                                <h2>Paciente</h2>
+                            </div>
+                            <div class="regPaciente">
+                                <label for="nombre">Nombre</label>
+                                <input type="text" id="nombre" autofocus>
+                            </div>
+                            <div class="regPaciente">
+                                <label for="apellido">Apellido</label>
+                                <input type="text" id="apellido">
+                            </div>
+                            <div class="regPaciente">
+                                <label for="dni">DNI</label>
+                                <input type="text" id="dni">
+                            </div>
+                            <div class="regPaciente">
+                                <label for="fecha">Fecha de ingreso</label>
+                                <input  type="date" id="fecha">
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <h2>Domicilio</h2>
+                            </div>
+                            <div class="regPaciente">
+                                <label for="calle">Calle</label>
+                                <input type="text" id="calle" autofocus>
+                            </div>
+                            <div class="regPaciente">
+                                <label for="numero">Numero</label>
+                                <input type="text" id="numero" autofocus>
+                            </div>
+                            <div class="regPaciente">
+                                <label for="localidad">Localidad</label>
+                                <input type="text" id="localidad" autofocus>
+                            </div>
+                            <div class="regPaciente">
+                                <label for="provincia">Provincia</label>
+                                <input type="text" id="provincia" autofocus>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit">Registrar 👍</button>
+                </form>
+            </section>
+
+
+            <section class="formPaciente">
+                <h2 class="titulos">Actualizar Paciente</h2>
+                <form id="formularioEdit">
+                    <div>
+                        <h2>Actualizar</h2>
+                    </div>
+                    <div class="conteinerPaciente">
+                        <div>
+                            <div>
+                                <h2>Paciente</h2>
+                            </div>
+                            <div class="regPaciente">
+                                <label for="id">ID</label>
+                                <input type="text" id="id" autofocus>
+                            </div>
+                            <div class="regPaciente">
+                                <label for="nombreEdit">Nombre</label>
+                                <input type="text" id="nombreEdit" autofocus>
+                            </div>
+                            <div class="regPaciente">
+                                <label for="apellidoEdit">Apellido</label>
+                                <input type="text" id="apellidoEdit">
+                            </div>
+                            <div class="regPaciente">
+                                <label for="dniEdit">DNI</label>
+                                <input type="text" id="dniEdit">
+                            </div>
+                            <div class="regPaciente">
+                                <label for="fechaEdit">Fecha de ingreso</label>
+                                <input  type="date" id="fechaEdit">
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <h2>Domicilio</h2>
+                            </div>
+                            <div class="regPaciente">
+                                <label for="idDoc">ID</label>
+                                <input type="text" id="idDoc" autofocus>
+                            </div>
+                            <div class="regPaciente">
+                                <label for="calleEdit">Calle</label>
+                                <input type="text" id="calleEdit" autofocus>
+                            </div>
+                            <div class="regPaciente">
+                                <label for="numeroEdit">Numero</label>
+                                <input type="text" id="numeroEdit" autofocus>
+                            </div>
+                            <div class="regPaciente">
+                                <label for="localidadEdit">Localidad</label>
+                                <input type="text" id="localidadEdit" autofocus>
+                            </div>
+                            <div class="regPaciente">
+                                <label for="provinciaEdit">Provincia</label>
+                                <input type="text" id="provinciaEdit" autofocus>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit">Actualizar 👍</button>
+                </form>
+            </section>
+            <section class="formPaciente">
+                <h2 class="titulos">Eliminar Paciente</h2>
+                <form id="formularioDelete">
+                    <div>
+                        <h2>Eliminar</h2>
+                    </div>
+                    <div class="deletePaciente">
+                        <label for="idDelete">El id del paciente a eliminar</label>
+                        <input type="number" id="idDelete" autofocus>
+                    </div>
+                    <button type="submit">Eliminar 👍</button>
+                </form>
+            </section>
+        </section>
+    </main>
+    <footer>
+
+    </footer>
+    <script src="./js/paciente.js"></script>
+</body>
+</html>

@@ -2,6 +2,7 @@ package com.backend.IntegradorFinal.controller;
 
 import com.backend.IntegradorFinal.dto.OdontologoDto;
 import com.backend.IntegradorFinal.entity.Odontologo;
+import com.backend.IntegradorFinal.exceptions.ResourceNotFoundException;
 import com.backend.IntegradorFinal.service.IOdontologoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -60,7 +61,7 @@ public class OdontologoController {
     }
 
     @DeleteMapping("/eliminar/{id}")
-    public ResponseEntity<?> eliminarOdontologo(@PathVariable Long id)  {
+    public ResponseEntity<?> eliminarOdontologo(@PathVariable Long id)  throws ResourceNotFoundException {
         odontologoService.eliminarOdontologo(id);
         return ResponseEntity.ok("Odontologo Eliminado");
     }

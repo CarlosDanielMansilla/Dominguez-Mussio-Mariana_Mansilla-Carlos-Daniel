@@ -3,6 +3,8 @@ package com.backend.IntegradorFinal.service.imp;
 import com.backend.IntegradorFinal.dto.DomicilioDto;
 import com.backend.IntegradorFinal.dto.PacienteDto;
 import com.backend.IntegradorFinal.entity.Paciente;
+import com.backend.IntegradorFinal.exceptions.BadRequestException;
+import com.backend.IntegradorFinal.exceptions.ResourceNotFoundException;
 import com.backend.IntegradorFinal.repository.PacienteRepository;
 import com.backend.IntegradorFinal.service.IPacienteService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -54,6 +56,7 @@ public class PacienteService implements IPacienteService {
         return pacienteDto;
     }
 
+
     @Override
     public PacienteDto guardarPaciente(Paciente paciente) {
         Paciente pacienteNuevo = pacienteRepository.save(paciente);
@@ -83,8 +86,16 @@ public class PacienteService implements IPacienteService {
     }
 
     @Override
-    public void eliminarPaciente(Long id) {
-        pacienteRepository.deleteById(id);
-        LOGGER.warn("Se ha eliminado el paciente con id {}", id);
+    public void eliminarPaciente(Long id) throws ResourceNotFoundException {
+        if(buscarPacientePorId(id) != null){
+            pacienteRepository.deleteById(id);
+            LOGGER.warn("Se ha eliminado el paciente con id {}", id);
+        }
+        else{
+            LOGGER.error("No se ha encontrado el paciente con id {}", id);
+            throw new ResourceNotFoundException("No se ha encontrado el paciente con id " + id);
+        }
+
+
     }
 }

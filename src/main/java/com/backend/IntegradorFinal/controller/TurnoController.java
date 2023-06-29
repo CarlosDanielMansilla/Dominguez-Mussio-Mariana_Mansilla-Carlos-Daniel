@@ -2,6 +2,7 @@ package com.backend.IntegradorFinal.controller;
 
 import com.backend.IntegradorFinal.dto.TurnoDto;
 import com.backend.IntegradorFinal.entity.Turno;
+import com.backend.IntegradorFinal.exceptions.BadRequestException;
 import com.backend.IntegradorFinal.exceptions.ResourceNotFoundException;
 import com.backend.IntegradorFinal.service.ITurnoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,12 +37,12 @@ public class TurnoController {
     }
 
     @PostMapping("/registrar")
-    public ResponseEntity<TurnoDto> registrarTurno(@RequestBody Turno turno) throws ResourceNotFoundException{
+    public ResponseEntity<TurnoDto> registrarTurno(@RequestBody Turno turno) throws BadRequestException {
         return new ResponseEntity<>(turnoService.guardarTurno(turno), null, HttpStatus.CREATED);
     }
 
     @DeleteMapping("/eliminar/{id}")
-    public ResponseEntity<?> eliminarTurno(@PathVariable Long id) /*throws ResourceNotFoundException*/ {
+    public ResponseEntity<?> eliminarTurno(@PathVariable Long id) throws ResourceNotFoundException {
         turnoService.eliminarTurno(id);
         return ResponseEntity.ok("Turno eliminado");
     }

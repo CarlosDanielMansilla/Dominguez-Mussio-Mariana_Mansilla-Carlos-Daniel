@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+
+    </header>
+    <main>
+        <section class="conteinerCrud">
+            <section class="formPaciente">
+                <h2 class="titulos">Registrar Turno</h2>
+                <form id="formularioT">
+                    <div>
+                        <h2>Registrar</h2>
+                    </div>
+                    <div class="conteinerPaciente">
+                        <div>
+                            <div>
+                                <h2>Turno</h2>
+                            </div>
+                            <div class="regPaciente">
+                                <label for="pacienteT">Paciente</label>
+                                <select name="pacienteT" id="pacienteT"></select>
+                            </div>
+                            <div class="regPaciente">
+                                <label for="odontologoT">Odontologo</label>
+                                <select name="odontologoT" id="odontologoT"></select>
+                            </div>
+                            <div class="regPaciente">
+                                <label for="fechaHora">Ingrese Fecha y Hora</label>
+                                <input type="datetime-local" id="fechaHora">
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <button type="submit">Registrar 👍</button>
+                </form>
+            </section>
+
+
+            <section class="formPaciente">
+                <h2 class="titulos">Actualizar Turno</h2>
+                <form id="formularioTEdit">
+                    <div>
+                        <h2>Actualizar Turno</h2>
+                    </div>
+                    <div class="conteinerPaciente">
+                        <div>
+                            <div>
+                                <h2>Turno</h2>
+                            </div>
+                            <div class="regPaciente">
+                                <label for="idT">ID</label>
+                                <input type="text" id="idT" autofocus>
+                            </div>
+                            <div class="regPaciente">
+                                <label for="pacienteTEdit">Paciente</label>
+                                <select name="pacienteTEdit" id="pacienteTEdit"></select>
+                            </div>
+                            <div class="regPaciente">
+                                <label for="odontologoTEdit">Odontologo</label>
+                                <select name="odontologoTEdit" id="odontologoTEdit"></select>
+                            </div>
+                            <div class="regPaciente">
+                                <label for="fechaHoraEdit">Ingrese Fecha y Hora</label>
+                                <input type="datetime-local" id="fechaHoraEdit">
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <button type="submit">Actualizar 👍</button>
+                </form>
+            </section>
+            <section class="formPaciente">
+                <h2 class="titulos">Eliminar Turno</h2>
+                <form id="formularioDelete">
+                    <div>
+                        <h2>Eliminar</h2>
+                    </div>
+                    <div class="deletePaciente">
+                        <label for="idDelete">El id del turno a eliminar</label>
+                        <input type="number" id="idDelete" autofocus>
+                    </div>
+                    <button type="submit">Eliminar 👍</button>
+                </form>
+            </section>
+        </section>
+    </main>
+    <footer>
+    </footer>
+    <script src="js/turno.js"></script>
+</body>
+</html>

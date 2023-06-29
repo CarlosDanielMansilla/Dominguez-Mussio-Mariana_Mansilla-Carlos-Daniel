@@ -2,6 +2,8 @@ package com.backend.IntegradorFinal.service;
 
 import com.backend.IntegradorFinal.dto.PacienteDto;
 import com.backend.IntegradorFinal.entity.Paciente;
+import com.backend.IntegradorFinal.exceptions.BadRequestException;
+import com.backend.IntegradorFinal.exceptions.ResourceNotFoundException;
 
 import java.util.List;
 
@@ -14,5 +16,6 @@ public interface IPacienteService {
 
     PacienteDto actualizarPaciente(Paciente paciente);
 
-    void eliminarPaciente(Long id);
+    void eliminarPaciente(Long id) throws ResourceNotFoundException;
+
 }
