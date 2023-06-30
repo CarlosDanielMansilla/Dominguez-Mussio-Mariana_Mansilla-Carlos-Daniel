@@ -85,50 +85,50 @@ window.addEventListener('load', function(){
     })
 
     // Función para obtener el objeto completo por su ID
-  function obtenerObjetoPorIdPaciente(id) {
+    function obtenerObjetoPorIdPaciente(id) {
     // Realizar la solicitud para obtener el objeto completo utilizando el ID
     const rawResponse = fetch(`pacientes/${id}`, {
-      method: 'GET',
-      headers: {
+    method: 'GET',
+    headers: {
         'Content-Type': 'application/json'
-      },
+    },
     });
 
     return rawResponse
-      .then(function(response) {
+    .then(function(response) {
         return response.json();
-      })
-      .then(function(data) {
+    })
+    .then(function(data) {
         return data;
-      })
-      .catch(function(error) {
+    })
+    .catch(function(error) {
         console.error(error);
         return null;
-      });
-  }
+    });
+}
 
     // Función para obtener el objeto completo por su ID
     function obtenerObjetoPorIdOdontologo(id) {
         // Realizar la solicitud para obtener el objeto completo utilizando el ID
         const rawResponse = fetch(`odontologos/${id}`, {
-          method: 'GET',
-          headers: {
+        method: 'GET',
+        headers: {
             'Content-Type': 'application/json'
-          },
+        },
         });
     
         return rawResponse
-          .then(function(response) {
+        .then(function(response) {
             return response.json();
-          })
-          .then(function(data) {
+        })
+        .then(function(data) {
             return data;
-          })
-          .catch(function(error) {
+        })
+        .catch(function(error) {
             console.error(error);
             return null;
-          });
-      }
+        });
+    }
     
     // REGISTRAR TURNO
 
@@ -168,7 +168,7 @@ window.addEventListener('load', function(){
             console.log(rawResponse)
     
             alert("El turno fue registrado con exito!");
-            //window.location.href = "index.html";
+            window.location.href = "index.html";
         }else{
             console.error("No se pudo obtener el objeto completo del paciente o del odontólogo");
         }
@@ -283,7 +283,7 @@ window.addEventListener('load', function(){
             console.log(rawResponse)
     
             alert("El turno fue actualizado con exito!");
-            //window.location.href = "index.html";
+            window.location.href = "index.html";
         }else{
             console.error("No se pudo obtener el objeto completo del paciente o del odontólogo");
         }
@@ -312,7 +312,7 @@ window.addEventListener('load', function(){
         console.log(rawResponse)
 
         alert("El turno fue eliminado con exito!");
-        //window.location.href = "index.html";
+        window.location.href = "index.html";
 
         
 

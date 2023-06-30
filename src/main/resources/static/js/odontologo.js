@@ -60,8 +60,8 @@ window.addEventListener('load', function(){
         });
         console.log(rawResponse)
 
-        alert("El odontologo fue actualizada con exito!");
-        //window.location.href = "index.html";
+        alert("El odontologo fue actualizado con exito!");
+        window.location.href = "index.html";
 
         
 
@@ -84,7 +84,7 @@ window.addEventListener('load', function(){
         console.log(rawResponse)
 
         alert("El odontologo fue eliminado con exito!");
-        //window.location.href = "index.html";
+        window.location.href = "index.html";
 
         
 

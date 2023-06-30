@@ -37,7 +37,7 @@ window.addEventListener('load', function(){
         });
         console.log(rawResponse)
 
-        alert("La cuenta fue creada con exito!");
+        alert("El paciente fue registrado con exito!");
         window.location.href = "index.html";
 
         
@@ -86,8 +86,8 @@ window.addEventListener('load', function(){
         });
         console.log(rawResponse)
 
-        alert("La cuenta fue actualizada con exito!");
-        //window.location.href = "index.html";
+        alert("El paciente fue actualizado con exito!");
+        window.location.href = "index.html";
 
         
 
@@ -109,8 +109,8 @@ window.addEventListener('load', function(){
         });
         console.log(rawResponse)
 
-        alert("La cuenta fue eliminada con exito!");
-        //window.location.href = "index.html";
+        alert("El paciente fue eliminado con exito!");
+        window.location.href = "index.html";
 
         
 
